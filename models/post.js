@@ -5,7 +5,7 @@ const PostSchema = new Schema({
     title: {type: String, require: true},
     date: {type: Date, require: true},
     content: {type: String,  require: true},
-    comments: [{type: Schema.Types.ObjectId, ref: Comment}],
+    comments: [{type: Schema.Types.ObjectId, ref: 'Comment'}],
     published: {type: Boolean, require: true}
 });
 

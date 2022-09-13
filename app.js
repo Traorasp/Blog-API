@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
+dotenv.config()
 const mongoose = require('mongoose');
 
 // Connects to mongoose database 
