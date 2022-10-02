@@ -15,7 +15,6 @@ exports.post_list_get = (req, res) => {
 
 exports.post_detail_get = (req, res) => {
     Post.findById(req.params.id)
-        .populate("comments")
         .exec(function(err, post) {
             if(post == null) {
                 return res.json({msg: 'Post not found'});
@@ -82,13 +81,12 @@ exports.post_update_post = [
         const post = new Post({
             _id: req.params.id,
             title: req.body.title,
-            comments: req.body.comments,
             date: Date.now(),
             content: req.body.content,
             published: req.body.published, 
         });
 
-        Post.findByIdAndUpdate(req.params.id, post, {}, (err, thePost) => {
+        Post.findByIdAndUpdate(req.params.id, post, {}, (err) => {
             if(err) {
                 return next(err);
             }

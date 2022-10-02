@@ -32,7 +32,7 @@ router.post('/signout', userControllers.user_signout_post);
 
 /// COMMENT ROUTES ///
 
-// POST request for creating a comment
-router.post('/comment/create', commentControllers.comment_create_post);
+// POST request for creating a comment on id post
+router.post('/comment/:id/create', commentControllers.comment_create_post);
 
 module.exports = router;
