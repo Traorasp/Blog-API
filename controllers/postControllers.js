@@ -34,6 +34,11 @@ exports.post_create_post = [
         .isLength({min: 1})
         .escape(),
     (req, res, next) => {
+
+        if(!req.user) {
+            res.json({msg: 'Not logged in'})
+        }
+
         const errors = validationResult(req);
 
         if(!errors.isEmpty()) {
@@ -69,6 +74,11 @@ exports.post_update_post = [
         .isLength({min: 1})
         .escape(),
     (req, res, next) => {
+
+        if(!req.user) {
+            res.json({msg: 'Not logged in'})
+        }
+
         const errors = validationResult(req);
 
         if(!errors.isEmpty()) {
@@ -96,6 +106,11 @@ exports.post_update_post = [
 ];
 
 exports.post_delete_post = (req, res) => {
+
+    if(!req.user) {
+        res.json({msg: 'Not logged in'})
+    }
+
     Post.findByIdAndDelete(req.params.id, (err) => {
         if(err) {
             return next(err);
