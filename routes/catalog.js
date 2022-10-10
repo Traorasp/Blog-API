@@ -7,8 +7,11 @@ const commentControllers = require('../controllers/commentControllers');
 
 /// POST ROUTES ///
 
-// GET request for blog list
+// GET request for blog list(Only those published)
 router.get('/', postControllers.post_list_get);
+
+// GET request for blog list
+router.get('/posts', postControllers.post_list_get_all);
 
 // POST request for creating a post
 router.post('/post/create', postControllers.post_create_post);

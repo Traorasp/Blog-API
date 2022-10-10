@@ -3,6 +3,17 @@ const Post = require('../models/post');
 const {body, validationResult} = require('express-validator');
 
 exports.post_list_get = (req, res) => {
+    Post.find({"published" : "true"})
+        .exec(function(err, posts) {
+            if(posts == null) {
+                return res.json({msg: 'Posts not found'});
+            }
+            if(err) {return next(err);}
+            res.json({posts});
+        }, [])
+};
+
+exports.post_list_get_all = (req, res) => {
     Post.find()
         .exec(function(err, posts) {
             if(posts == null) {
@@ -10,7 +21,7 @@ exports.post_list_get = (req, res) => {
             }
             if(err) {return next(err);}
             res.json({posts});
-        })
+        }, [])
 };
 
 exports.post_detail_get = (req, res) => {
