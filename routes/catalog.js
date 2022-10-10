@@ -35,6 +35,9 @@ router.post('/signout', userControllers.user_signout_post);
 
 /// COMMENT ROUTES ///
 
+// GET request for all comment for a post
+router.get('/comment/:id', commentControllers.comment_list_get);
+
 // POST request for creating a comment on id post
 router.post('/comment/:id/create', commentControllers.comment_create_post);
 

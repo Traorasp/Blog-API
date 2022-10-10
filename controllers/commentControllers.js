@@ -2,6 +2,17 @@ const Comment = require('../models/comment');
 
 const {body, validationResult} = require('express-validator');
 
+exports.comment_list_get = (req, res) => {
+    Post.find({"post" : `${req.params.id}`})
+        .exec(function(err, comments) {
+            if(comments == null) {
+                return res.json({msg: 'Comments not found'});
+            }
+            if(err) {return next(err);}
+            res.json({posts});
+        }, [])
+};
+
 exports.comment_create_post = [
     body('comment', 'Comment is empty')
         .trim()
