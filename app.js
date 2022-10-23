@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-
+const User = require('./models/User');
 
 // Connects to mongoose database 
 mongoose.connect(process.env.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
